@@ -1,0 +1,64 @@
+ <div class="row justify-content-center">
+   <div class="col-md-4 register-change">
+     <!-- form card register -->
+     <div class="card card-outline-secondary">
+       <div class="card-header">
+         <h3 class="mb-0">Edit Change</h3>
+       </div>
+       <div class="card-body">
+         <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+           <div class="form-group">
+             <label for="inputName">Change ID</label>
+             <input class="form-control" type="text" formControlName="changeid">
+             <div class="invalid-feedback" *ngIf="submitted && myForm.changeid.errors?.required">
+               Change ID is required.
+             </div>
+           </div>
+
+           <div class="form-group">
+            <label for="inputName">ChangeTask ID</label>
+            <input class="form-control" type="text" formControlName="changetaskid">
+            <div class="invalid-feedback" *ngIf="submitted && myForm.changetaskid.errors?.required">
+              ChangeTask ID is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputName">ChangeTitle</label>
+            <input class="form-control" type="text" formControlName="changetitle">
+            <div class="invalid-feedback" *ngIf="submitted && myForm.changetitle.errors?.required">
+              ChangeTitle is required.
+            </div>
+          </div>
+
+           <div class="form-group">
+             <label for="inputPassword3">Account</label>
+             <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+               formControlName="account">
+               <option value="">Choose...</option>
+               <option *ngFor="let changeProfile of ChangeProfile" value="{{changeProfile}}">{{changeProfile}}
+               </option>
+             </select>
+             <!-- error -->
+             <div class="invalid-feedback" *ngIf="submitted && myForm.account.errors?.required">
+               Choose account.
+             </div>
+           </div>
+
+           <div class="form-group">
+            <label for="inputName"> Executed By</label>
+            <input class="form-control" type="text" formControlName="execby">
+            <div class="invalid-feedback" *ngIf="submitted && myForm.execby.errors?.required">
+              Executed By is required.
+            </div>
+          </div>
+
+           <div class="form-group">
+             <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+           </div>
+         </form>
+       </div>
+     </div><!-- form  -->
+   </div>
+ </div>
